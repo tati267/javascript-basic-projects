@@ -8,6 +8,25 @@ const date = document.getElementById("date");
 date.innerHTML = new Date().getFullYear();
 
 // ********** close links ************
+const navToggle = document.querySelector(".nav-toggle");
+const linksContainer = document.querySelector(".links-container");
+const links = document.querySelector(".links");
+
+// With this approuch I have to remember awerall height ".show-links" if
+// delete or add new links container gonna be same. How to make it responsive?
+//
+// navToggle.addEventListener('click', ()=>{
+//   linksContainer.classList.toggle("show-links")
+// })
+
+navToggle.addEventListener('click', () => {
+  const containerHeight = linksContainer.getBoundingClientRect().height;
+  const linksHeight = links.getBoundingClientRect().height;
+
+  containerHeight === 0 ? linksContainer.style.height = `${linksHeight}px` :
+    linksContainer.style.height = 0;
+});
+
 
 // ********** fixed navbar ************
 
