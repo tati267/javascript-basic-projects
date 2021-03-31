@@ -12,24 +12,32 @@ const navToggle = document.querySelector(".nav-toggle");
 const linksContainer = document.querySelector(".links-container");
 const links = document.querySelector(".links");
 
-// With this approuch I have to remember awerall height ".show-links" if
-// delete or add new links container gonna be same. How to make it responsive?
-//
-// navToggle.addEventListener('click', ()=>{
-//   linksContainer.classList.toggle("show-links")
-// })
+/*   With this approuch I have to remember awerall height of ".show-links" if
+     delete or add new links, container going to be the same. How to make it responsive?
+ 
+navToggle.addEventListener('click', ()=>{
+  linksContainer.classList.toggle("show-links")
+})
+*/
 
 navToggle.addEventListener('click', () => {
   const containerHeight = linksContainer.getBoundingClientRect().height;
   const linksHeight = links.getBoundingClientRect().height;
 
-  containerHeight === 0 ? linksContainer.style.height = `${linksHeight}px` :
-    linksContainer.style.height = 0;
+  containerHeight === 0 ? linksContainer.style.height = `${linksHeight}px` : linksContainer.style.height = 0;
 });
 
 
 // ********** fixed navbar ************
+const navbar = document.getElementById("nav");
+const topLink = document.querySelector(".top-link");
 
+window.addEventListener('scroll', function () {
+  const scrollHeight = window.pageYOffset;
+  const navHeight = navbar.getBoundingClientRect().height;
+
+  scrollHeight > navHeight ? navbar.classList.add('fixed-nav') : navbar.classList.remove('fixed-nav');
+})
 // ********** smooth scroll ************
 
 // calculate heights
